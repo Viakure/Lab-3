@@ -30,6 +30,7 @@ public class DetalleActivity extends AppCompatActivity {
 
         Intent intent = getIntent();
         //String nombre = intent.getStringExtra("nombre");
+        id = getIntent().getLongExtra("codigo", id);
 
         Contacto contacto = (Contacto) intent.getSerializableExtra("contacto");
         String nombre = contacto.getNombre();
@@ -61,7 +62,7 @@ public class DetalleActivity extends AppCompatActivity {
                 finish();
                 break;
             case R.id.action_eliminar:
-                eliminarContacto();
+                eliminarContacto(id);
                 Toast.makeText(this, "Eliminar", Toast.LENGTH_SHORT).show();
                 break;
             default:
@@ -70,11 +71,8 @@ public class DetalleActivity extends AppCompatActivity {
         return super.onOptionsItemSelected(item);
     }
 
-    public void eliminarContacto(){
-
-        boolean elimino;
+    public void eliminarContacto(long id){
         //id del contacto
-        elimino = dataSource.eliminarContacto(id);
-
+        dataSource.eliminarContacto(id);
     }
 }

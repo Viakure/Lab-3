@@ -71,11 +71,8 @@ public class ContactoDataSource {
     }
 
     public boolean eliminarContacto(long id){
-        String where = "id=" + id;
-        int result = db.delete("contacto", where, null);
-
+        int result = db.delete("contacto", "id='"+id+"'", null);
         return (result == 1);
-
     }
 
 
